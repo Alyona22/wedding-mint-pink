@@ -176,14 +176,20 @@ input[type="radio"] {
 		height: 100%;
 		width: 100%;
 	}
+}
+
+.close-menu {
+	position: relative;
 	
 	&:after {
-		background-color: red;
-		content: '';
-		display: block;
-		height: 100vh;
-		width: 100%;
-		position: fixed;
+		@include media ('<tablet') {
+			content: '';
+			display: block;
+			height: 100vh;
+			width: 100%;
+			position: fixed;
+			z-index: 1;
+		}
 	}
 }
 

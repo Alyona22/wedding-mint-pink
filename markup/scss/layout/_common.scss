@@ -101,6 +101,7 @@ h3 {
 	
 	.text-holder {
 		position: relative;
+		text-align: center;
 		z-index: 1;
 		
 		@include media ('>=widescreen') {
@@ -108,7 +109,6 @@ h3 {
 		}
 		
 		h1 {
-			color: $white;
 			margin-bottom: 30px;
 			
 			@include media ('>=phone') {
@@ -124,8 +124,14 @@ h3 {
 			}
 		}
 		
+		h1,
 		time {
-			color: $white;
+			background: linear-gradient(to top, rgba(242,173,191,1) 1%,rgba(205,242,225,1) 100%);
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+		
+		time {
 			display: block;
 			font-size: 35px;
 			font-family: $markscript-font;
@@ -142,8 +148,12 @@ h3 {
 	display: none;
 	
 	@include media ('>=tablet') {
+		@include animate(color background);
+		
 		bottom: 10px;
-		color: $pink;
+		background: linear-gradient(to top, rgba(205,242,225,1) 1%,rgba(242,173,191,1) 100%);
+		-webkit-background-clip: text;
+		color: transparent;
 		display: block;
 		font-family: $ubuntu-font;
 		font-size: 12px;
@@ -161,6 +171,11 @@ h3 {
 			left: 75px;
 		}
 		
+		&:hover {
+			background: linear-gradient(to top, rgba(242,173,191,1) 1%,rgba(205,242,225,1) 100%);
+			-webkit-background-clip: text;
+		}
+		
 		span {
 			background-color: $light-pink;
 			height: 70px;
@@ -175,7 +190,7 @@ h3 {
 			
 			&:after {
 				animation: scrollLine 1.5s infinite linear;
-				background-color: $pink;
+				background-color: $mint;
 				content: '';
 				height: 50%;
 				position: absolute;
