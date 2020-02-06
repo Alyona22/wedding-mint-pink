@@ -63,7 +63,7 @@ h3 {
 	align-items: center;
 	justify-content: center;
 	min-height: calc(100vh - 75px);
-	padding: 50px 0;
+	padding: 50px 15px;
 	position: relative;
 	
 	@include media ('<tablet') {
@@ -72,7 +72,7 @@ h3 {
 	
 	@include media ('>=tablet') {
 		margin-left: 50px;
-		padding: 50px 0;
+		padding: 50px 15px;
 		width: calc(100% - 100px);
 	}
 	
@@ -133,13 +133,17 @@ h3 {
 		
 		time {
 			display: block;
-			font-size: 35px;
+			font-size: 30px;
 			font-family: $markscript-font;
 			font-weight: 700;
 			letter-spacing: 4.8px;
 			line-height: 1;
 			text-transform: uppercase;
 			text-align: center;
+
+			@include media ('>=tablet') {
+				font-size: 35px;
+			}
 		}
 	}
 }
@@ -431,12 +435,12 @@ blockquote {
 	}
 	
 	.img-holder {
-		max-width: 300px;
 		position: relative;
 		z-index: 1;
 		
 		@include media ('>=tablet') {
 			margin: 0 0 0 auto;
+			max-width: 320px;
 		}
 		
 		@include media ('>=desktop') {
@@ -603,8 +607,7 @@ blockquote {
 		@include media ('>=widescreen') {
 			@include size(504px, 338px);
 			
-			left: 25px;
-			right: auto;
+			bottom: 20%;
 		}
 	}
 }
@@ -613,10 +616,6 @@ blockquote {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	
-	@include media ('>=widescreen') {
-		align-items: center;
-	}
 }
 
 .time-list {
@@ -632,10 +631,11 @@ blockquote {
 		width: 50%;
 	}
 	
-	li {
+	> li {
 		align-items: flex-start;
 		background-color: $white;
 		display: flex;
+		flex-wrap: wrap;
 		padding: 15px;
 		margin-bottom: 19px;
 		
@@ -645,6 +645,22 @@ blockquote {
 		
 		@include media ('>=widescreen') {
 			padding: 40px 46px;
+		}
+		
+		&:first-child {
+			.text-holder {
+				h3 {
+					@include media ('>=desktop') {
+						padding-left: 55px;
+					}
+				}
+			}
+		}
+		
+		&.dress-code {
+			.text-holder {
+				width: 100%;
+			}
 		}
 	}
 	
@@ -726,6 +742,46 @@ blockquote {
 	address {
 		line-height: 1;
 	}
+}
+
+.colors {
+	@extend %listreset;
+	
+	display: flex;
+	flex-wrap: wrap;
+	margin: 30px -15px 0;
+	width: 100%;
+	
+	li {
+		margin: 0 15px;
+		width: calc(25% - 30px);
+		
+		div {
+			@include size(50px);
+			
+			border-radius: 50%;
+			
+			@include media ('>=tablet') {
+				@include size(80px);
+			}
+		}
+	}
+}
+
+.light-pink {
+	background-color: $light-pink;
+}
+
+.pink {
+	background-color: $pink;
+}
+
+.mint {
+	background-color: $mint;
+}
+
+.green {
+	background-color: $green;
 }
 
 .map-holder {

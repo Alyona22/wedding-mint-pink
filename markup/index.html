@@ -13,7 +13,6 @@
 <body>
 	<div id="wrapper">
 		<header id="header">
-			<label for="menu" class="close-menu"></label>
 			<div class="container">
 				<strong class="logo">
 					<a href="#">
@@ -25,18 +24,18 @@
 					<label for="menu" class="menu-opener"></label>
 					<div class="menu-holder">
 						<ul class="menu">
-							<li class="active">
-								<a href="#">
+							<li>
+								<a href="#our-story">
 									<label for="menu">Our story</label>
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#wedding-day">
 									<label for="menu">Wedding day</label>
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#invitation">
 									<label for="menu">Celebrate with us</label>
 								</a>
 							</li>
@@ -65,7 +64,7 @@
 					</blockquote>
 				</div>
 			</div>
-			<section class="about">
+			<section class="about" id="our-story">
 				<div class="container">
 					<div class="heading">
 						<span class="subtitle">
@@ -148,7 +147,7 @@
 					</ul>
 				</div>
 			</section>
-			<section class="wedding-day">
+			<section class="wedding-day" id="wedding-day">
 				<div class="container">
 					<div class="heading">
 						<span class="subtitle">
@@ -159,6 +158,17 @@
 				</div>
 				<div class="timing">
 					<ul class="time-list">
+						<li>
+							<div class="text-holder">
+								<h3><span class="first-letter">С</span>бор<br> гостей</h3>
+								<span class="title">Адрес проведения</span>
+								<address>г. Харьков, все парки города</address>
+							</div>
+							<div class="time">
+								<span class="title">Время проведения</span>
+								<time datetime="14:00">14:00</time>
+							</div>
+						</li>
 						<li>
 							<div class="text-holder">
 								<h3><span class="first-letter">Ц</span>еремония<br> бракосочетания</h3>
@@ -172,17 +182,6 @@
 						</li>
 						<li>
 							<div class="text-holder">
-								<h3><span class="first-letter">П</span>рогулка<br> молодоженов</h3>
-								<span class="title">Адрес проведения</span>
-								<address>г. Харьков, все парки города</address>
-							</div>
-							<div class="time">
-								<span class="title">Время проведения</span>
-								<time datetime="14:00">14:00</time>
-							</div>
-						</li>
-						<li>
-							<div class="text-holder">
 								<h3><span class="first-letter">П</span>раздничный<br> банкет</h3>
 								<span class="title">Адрес проведения</span>
 								<address>г. Харьков, ул. Сумская 102</address>
@@ -191,6 +190,26 @@
 								<span class="title">Время проведения</span>
 								<time datetime="18:00">18:00</time>
 							</div>
+						</li>
+						<li class="dress-code">
+							<div class="text-holder">
+								<h3><span class="first-letter">Ц</span>ветовая<br> палитра</h3>
+								<span class="title">Мы не обязываем вас привязываться к какому-либо цвету, но были бы благодарны, если бы вы обратили внимание на цвета, что представлены ниже, при выборе своего наряда)</span>
+							</div>
+							<ul class="colors">
+								<li>
+									<div class="light-pink"></div>
+								</li>
+								<li>
+									<div class="pink"></div>
+								</li>
+								<li>
+									<div class="mint"></div>
+								</li>
+								<li>
+									<div class="green"></div>
+								</li>
+							</ul>
 						</li>
 					</ul>
 					<div class="map-holder">
@@ -201,11 +220,11 @@
 					<img src="images/Женя-и-Алена.png" alt="Женя и Алёна">
 				</div>
 			</section>
-			<section class="invitation">
+			<section class="invitation" id="invitation">
 				<div class="container">
 					<div class="heading">
 						<span class="subtitle">
-							<span class="text">Form</span>
+							<span class="text">Invitation form</span>
 						</span>
 						<h2>Приглашение на свадьбу</h2>
 					</div>

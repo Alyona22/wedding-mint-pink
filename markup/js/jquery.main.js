@@ -5,12 +5,13 @@ jQuery(function() {
 // initialize smooth anchor links
 function initAnchors() {
 	new SmoothScroll({
-		anchorLinks: 'a.scroll-down',
+		anchorLinks: 'a[href^="#"]:not([href="#"])',
 		extraOffset: 0,
+		activeClasses: 'parent',
+		anchorActiveClass: 'active',
 		wheelBehavior: 'none'
 	});
 }
-
 
 /*!
  * SmoothScroll module

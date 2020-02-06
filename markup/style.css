@@ -482,7 +482,8 @@ th {
 .menu,
 .about-list,
 .detail-list,
-.time-list {
+.time-list,
+.colors {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -977,7 +978,7 @@ h6,
 
 h1,
 .h1 {
-	font-size: 45px;
+	font-size: 42px;
 }
 
 h2,
@@ -1188,7 +1189,7 @@ h3 {
 	-ms-flex-pack: center;
 	justify-content: center;
 	min-height: calc(100vh - 75px);
-	padding: 50px 0;
+	padding: 50px 15px;
 	position: relative;
 }
 
@@ -1225,7 +1226,7 @@ h3 {
 
 .photo .text-holder time {
 	display: block;
-	font-size: 35px;
+	font-size: 30px;
 	font-family: "Marck Script", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
 	font-weight: 700;
 	letter-spacing: 4.8px;
@@ -1375,7 +1376,6 @@ blockquote p:after {
 }
 
 .about-list .img-holder {
-	max-width: 300px;
 	position: relative;
 	z-index: 1;
 }
@@ -1489,7 +1489,7 @@ blockquote p:after {
 	width: 100%;
 }
 
-.time-list li {
+.time-list > li {
 	-webkit-box-align: start;
 	-ms-flex-align: start;
 	align-items: flex-start;
@@ -1497,8 +1497,14 @@ blockquote p:after {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
 	padding: 15px;
 	margin-bottom: 19px;
+}
+
+.time-list > li.dress-code .text-holder {
+	width: 100%;
 }
 
 .time-list .title {
@@ -1556,6 +1562,43 @@ blockquote p:after {
 .time-list .title,
 .time-list address {
 	line-height: 1;
+}
+
+.colors {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin: 30px -15px 0;
+	width: 100%;
+}
+
+.colors li {
+	margin: 0 15px;
+	width: calc(25% - 30px);
+}
+
+.colors li div {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.light-pink {
+	background-color: #f9cad4;
+}
+
+.pink {
+	background-color: #f2adbf;
+}
+
+.mint {
+	background-color: #cdf2e1;
+}
+
+.green {
+	background-color: #b8ecc6;
 }
 
 .map-holder {
@@ -1864,12 +1907,16 @@ blockquote p:after {
 
 	.photo {
 		margin-left: 50px;
-		padding: 50px 0;
+		padding: 50px 15px;
 		width: calc(100% - 100px);
 	}
 
 	.photo .text-holder h1 {
 		font-size: 80px;
+	}
+
+	.photo .text-holder time {
+		font-size: 35px;
 	}
 
 	.scroll-down {
@@ -1961,6 +2008,7 @@ blockquote p:after {
 
 	.about-list .img-holder {
 		margin: 0 0 0 auto;
+		max-width: 320px;
 	}
 
 	.detail-list {
@@ -2006,6 +2054,11 @@ blockquote p:after {
 
 	.time-list .title {
 		font-size: 14px;
+	}
+
+	.colors li div {
+		width: 80px;
+		height: 80px;
 	}
 
 	.map-holder {
@@ -2125,8 +2178,12 @@ blockquote p:after {
 		left: -100px;
 	}
 
-	.time-list li {
+	.time-list > li {
 		padding: 40px 20px;
+	}
+
+	.time-list > li:first-child .text-holder h3 {
+		padding-left: 55px;
 	}
 
 	.time-list time {
@@ -2247,17 +2304,10 @@ blockquote p:after {
 	.wedding-day .img-decor {
 		width: 504px;
 		height: 338px;
-		left: 25px;
-		right: auto;
+		bottom: 20%;
 	}
 
-	.timing {
-		-webkit-box-align: center;
-		-ms-flex-align: center;
-		align-items: center;
-	}
-
-	.time-list li {
+	.time-list > li {
 		padding: 40px 46px;
 	}
 
@@ -2315,6 +2365,7 @@ blockquote p:after {
 		-ms-transform: translateY(-100%);
 		transform: translateY(-100%);
 		padding: 0 0 15px;
+		height: calc(100vh - 74px);
 	}
 
 	.menu li {
