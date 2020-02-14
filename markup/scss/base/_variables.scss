@@ -6,10 +6,10 @@ $gray: #6e6c77;
 $dark-gray: #413e4e;
 $black: #000;
 $white: #fff;
-$light-pink: #F9CAD4;
-$pink: #F2ADBF;
-$mint: #CDF2E1;
-$green: #B8ECC6;
+$gold: #DDC38A;
+$pink: #FFE2DA;
+$mint: #97BEB9;
+$green: #216A62;
 
 $base-font-sans-serif: 'Montserrat', 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
 $base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif;
@@ -22,7 +22,7 @@ $rem-base: 16px;
 
 // Body
 $base-text-color: $gray;
-$base-background-color: #fffbf5;
+$base-background-color: #fffbf8;
 $font-size-base: 14px;
 $line-height-base: 1.71428571;
 $base-font-family: $base-font-sans-serif;
@@ -32,7 +32,7 @@ $vertical-rhythm: ($line-height-base * 1em);
 $base-min-width: 320px;
 
 // Liks
-$base-link-color: $pink;
+$base-link-color: $mint;
 
 // Buttons 
 $btn-color: $white !default;

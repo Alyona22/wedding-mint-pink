@@ -12,10 +12,6 @@
 		padding: 20px 0;
 	}
 	
-	@include media ('>=widescreen') {
-		padding: 45px 0 60px;
-	}
-	
 	input[type="checkbox"] {
 		&:checked {
 			&	~ {
@@ -138,7 +134,7 @@ input[type="radio"] {
 			&:after {
 				@include animate(width);
 				
-				background-color: $light-pink;
+				background-color: $mint;
 				bottom: 0;
 				content: '';
 				height: 1px;
