@@ -20,6 +20,10 @@
 					
 					.menu {
 						transform: translateY(0);
+
+						&.menu-closed {
+							transform: translateY(-100%);
+						}
 					}
 				}
 			}
@@ -79,7 +83,7 @@ input[type="radio"] {
 		background-color: $base-background-color;
 		box-shadow: 0 3px 15px rgba($black, .15);
 		transform: translateY(-100%);
-		padding: 0 0 15px;
+		padding: 40px 0 15px;
 		height: calc(100vh - 74px);
 	}
 	
@@ -88,9 +92,14 @@ input[type="radio"] {
 		display: flex;
 		justify-content: flex-end;
 	}
+
+	&.menu-closed {
+		transform: translateY(-100%);
+	}
 	
 	li {
 		@include media ('<tablet') {
+			margin-bottom: 40px;
 			text-align: center;
 		}
 		

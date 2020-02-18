@@ -1,5 +1,7 @@
 jQuery(function() {
 	initAnchors();
+	initCloseMenu();
+	initShowBlock();
 });
 
 // initialize smooth anchor links
@@ -13,16 +15,45 @@ function initAnchors() {
 	});
 }
 
+// initialize smooth anchor links
+function initShowBlock() {
+	var details = jQuery('.wpcf7').find('.details-holder.partner-details');
+	var partnerDetails = jQuery('.wpcf7').find('.detail-input.name-input');
+
+	jQuery('.wpcf7-form .yes input').on('change', function() {
+		details.show();
+	});
+
+	jQuery('.wpcf7-form .with-love input').on('change', function() {
+		partnerDetails.show();
+		jQuery('.wpcf7-form').toggleClass('name-show');
+	});
+}
+
+function initCloseMenu() {
+	var menu = jQuery('.menu');
+	var input = jQuery('#menu');
+	
+	jQuery('.menu a[href^="#"]').on('click', function() {
+		menu.addClass('menu-closed');
+		input.prop("checked", false);
+	});
+	
+	jQuery('.menu-opener').on('click', function() {
+		menu.removeClass('menu-closed');
+	});
+}
+
 /*!
- * SmoothScroll module
- */
+* SmoothScroll module
+*/
 ;(function($, exports) {
 	// private variables
 	var page,
-		win = $(window),
-		activeBlock, activeWheelHandler,
-		wheelEvents = ('onwheel' in document || document.documentMode >= 9 ? 'wheel' : 'mousewheel DOMMouseScroll');
-
+	win = $(window),
+	activeBlock, activeWheelHandler,
+	wheelEvents = ('onwheel' in document || document.documentMode >= 9 ? 'wheel' : 'mousewheel DOMMouseScroll');
+	
 	// animation handlers
 	function scrollTo(offset, options, callback) {
 		// initialize variables
@@ -40,14 +71,14 @@ function initAnchors() {
 		} else {
 			return;
 		}
-
+		
 		// treat single number as scrollTop
 		if (typeof offset === 'number') {
 			offset = {
 				top: offset
 			};
 		}
-
+		
 		// handle mousewheel/trackpad while animation is active
 		if (activeBlock && activeWheelHandler) {
 			activeBlock.off(wheelEvents, activeWheelHandler);
@@ -63,7 +94,7 @@ function initAnchors() {
 			};
 			activeBlock = scrollBlock.on(wheelEvents, activeWheelHandler);
 		}
-
+		
 		// start scrolling animation
 		scrollBlock.stop().animate({
 			scrollLeft: offset.left,
@@ -77,7 +108,7 @@ function initAnchors() {
 			}
 		});
 	}
-
+	
 	// smooth scroll contstructor
 	function SmoothScroll(options) {
 		this.options = $.extend({
@@ -104,7 +135,7 @@ function initAnchors() {
 		},
 		initStructure: function() {
 			var self = this;
-
+			
 			this.container = this.options.container ? $(this.options.container) : $('html,body');
 			this.scrollContainer = this.options.container ? this.container : win;
 			this.anchorLinks = jQuery(this.options.anchorLinks).filter(function() {
@@ -129,7 +160,7 @@ function initAnchors() {
 			if (this.options.container) {
 				blockOffset -= this.container.offset().top - this.container.prop('scrollTop');
 			}
-
+			
 			// handle extra offset
 			if (typeof this.options.extraOffset === 'number') {
 				blockOffset -= this.options.extraOffset;
@@ -142,23 +173,23 @@ function initAnchors() {
 		},
 		attachEvents: function() {
 			var self = this;
-
+			
 			// handle active classes
 			if (this.options.activeClasses && this.anchorLinks.length) {
 				// cache structure
 				this.anchorData = [];
-
+				
 				for (var i = 0; i < this.anchorLinks.length; i++) {
 					var link = jQuery(this.anchorLinks[i]),
-						targetBlock = self.getAnchorTarget(link),
-						anchorDataItem = null;
-
+					targetBlock = self.getAnchorTarget(link),
+					anchorDataItem = null;
+					
 					$.each(self.anchorData, function(index, item) {
 						if (item.block[0] === targetBlock[0]) {
 							anchorDataItem = item;
 						}
 					});
-
+					
 					if (anchorDataItem) {
 						anchorDataItem.link = anchorDataItem.link.add(link);
 					} else {
@@ -168,7 +199,7 @@ function initAnchors() {
 						});
 					}
 				};
-
+				
 				// add additional event handlers
 				this.resizeHandler = function() {
 					if (!self.isInit) return;
@@ -177,12 +208,12 @@ function initAnchors() {
 				this.scrollHandler = function() {
 					self.refreshActiveClass();
 				};
-
+				
 				this.recalculateOffsets();
 				this.scrollContainer.on('scroll', this.scrollHandler);
 				win.on('resize.SmoothScroll load.SmoothScroll orientationchange.SmoothScroll refreshAnchor.SmoothScroll', this.resizeHandler);
 			}
-
+			
 			// handle click event
 			this.clickHandler = function(e) {
 				self.onClick(e);
@@ -205,28 +236,28 @@ function initAnchors() {
 		},
 		refreshActiveClass: function() {
 			var self = this,
-				foundFlag = false,
-				containerHeight = this.container.prop('scrollHeight'),
-				viewPortHeight = this.scrollContainer.height(),
-				scrollTop = this.options.container ? this.container.prop('scrollTop') : win.scrollTop();
-
+			foundFlag = false,
+			containerHeight = this.container.prop('scrollHeight'),
+			viewPortHeight = this.scrollContainer.height(),
+			scrollTop = this.options.container ? this.container.prop('scrollTop') : win.scrollTop();
+			
 			// user function instead of default handler
 			if (this.options.customScrollHandler) {
 				this.options.customScrollHandler.call(this, scrollTop, this.anchorData);
 				return;
 			}
-
+			
 			// sort anchor data by offsets
 			this.anchorData.sort(function(a, b) {
 				return a.offset.top - b.offset.top;
 			});
-
+			
 			// default active class handler
 			$.each(this.anchorData, function(index) {
 				var reverseIndex = self.anchorData.length - index - 1,
-					data = self.anchorData[reverseIndex],
-					anchorElement = (self.options.activeClasses === 'parent' ? data.link.parent() : data.link);
-
+				data = self.anchorData[reverseIndex],
+				anchorElement = (self.options.activeClasses === 'parent' ? data.link.parent() : data.link);
+				
 				if (scrollTop >= containerHeight - viewPortHeight) {
 					// handle last section
 					if (reverseIndex === self.anchorData.length - 1) {
@@ -256,8 +287,8 @@ function initAnchors() {
 		},
 		onClick: function(e) {
 			var targetBlock = this.getAnchorTarget(e.currentTarget),
-				targetOffset = this.getTargetOffset(targetBlock);
-
+			targetOffset = this.getTargetOffset(targetBlock);
+			
 			e.preventDefault();
 			scrollTo(targetOffset, {
 				container: this.container,
@@ -275,30 +306,30 @@ function initAnchors() {
 		},
 		destroy: function() {
 			var self = this;
-
+			
 			this.isInit = false;
 			if (this.options.activeClasses) {
 				win.off('resize.SmoothScroll load.SmoothScroll orientationchange.SmoothScroll refreshAnchor.SmoothScroll', this.resizeHandler);
 				this.scrollContainer.off('scroll', this.scrollHandler);
 				$.each(this.anchorData, function(index) {
 					var reverseIndex = self.anchorData.length - index - 1,
-						data = self.anchorData[reverseIndex],
-						anchorElement = (self.options.activeClasses === 'parent' ? data.link.parent() : data.link);
-
+					data = self.anchorData[reverseIndex],
+					anchorElement = (self.options.activeClasses === 'parent' ? data.link.parent() : data.link);
+					
 					self.toggleActiveClass(anchorElement, data.block, false);
 				});
 			}
 			this.anchorLinks.off('click', this.clickHandler);
 		}
 	};
-
+	
 	// public API
 	$.extend(SmoothScroll, {
 		scrollTo: function(blockOrOffset, durationOrOptions, callback) {
 			scrollTo(blockOrOffset, durationOrOptions, callback);
 		}
 	});
-
+	
 	// export module
 	exports.SmoothScroll = SmoothScroll;
 }(jQuery, this));

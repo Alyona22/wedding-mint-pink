@@ -71,23 +71,21 @@ h3 {
 	}
 	
 	@include media ('>=tablet') {
-		margin-left: 50px;
+		margin: 0 50px;
 		padding: 50px 15px;
-		width: calc(100% - 100px);
 	}
 	
 	@include media ('>=desktop') {
-		min-height: 600px;
 		min-height: calc(100vh - 117px);
 	}
 	
 	@include media ('>=widescreen') {
-		margin-left: 160px;
+		margin: 0 160px;
 		width: calc(100% - 320px);
 	}
 	
 	&:before {
-		background: linear-gradient(to bottom, rgba(255,255,255,.1) 0%, rgba($green, .8) 100%);
+		background: linear-gradient(to bottom, rgba($white, .1) 0%, rgba($black, .5) 100%);
 		bottom: 0;
 		content: '';
 		left: 0;
@@ -109,8 +107,8 @@ h3 {
 		h1 {
 			margin-bottom: 30px;
 			
-			@include media ('>=phone') {
-				font-size: 60px;
+			@include media ('>=375px') {
+				font-size: 50px;
 			}
 			
 			@include media ('>=tablet') {
@@ -125,7 +123,7 @@ h3 {
 		h1,
 		time {
 			color: $white;
-			text-shadow: -2px 0 $green, 0 2px $green, 2px 0 $green, 0 -2px $green;
+			text-shadow: -2px 0 $dark-gray, 0 2px $dark-gray, 2px 0 $dark-gray, 0 -2px $dark-gray;
 		}
 		
 		time {
@@ -156,7 +154,7 @@ h3 {
 		font-size: 12px;
 		font-weight: 700;
 		letter-spacing: 1px;
-		left: 12px;
+		left: 15px;
 		position: absolute;
 		text-transform: uppercase;
 		transform: rotate(180deg);
@@ -631,14 +629,6 @@ blockquote {
 					width: 50%;
 				}
 			}
-			
-			.text-holder {
-				h3 {
-					@include media ('>=desktop') {
-						padding-left: 55px;
-					}
-				}
-			}
 		}
 		
 		&.dress-code {
@@ -676,8 +666,12 @@ blockquote {
 	}
 	
 	.text-holder {
-		padding-right: 15px;
+		padding-right: 5px;
 		width: 65%;
+		
+		@include media ('>=tablet') {
+			padding-right: 15px;
+		}
 		
 		@include media ('>=desktop') {
 			width: 70%;
@@ -751,10 +745,6 @@ blockquote {
 			font-size: 24px;
 		}
 	}
-	
-	.title {
-		line-height: 1;
-	}
 }
 
 .map-holder {
@@ -825,6 +815,10 @@ blockquote {
 	padding: 50px 0;
 	position: relative;
 	
+	@include media ('>=tablet') {
+		padding-bottom: 80px;
+	}
+	
 	@include media ('>=widescreen') {
 		padding: 126px 0;
 	}
@@ -886,7 +880,7 @@ blockquote {
 	align-items: flex-start;
 	display: flex;
 	flex-wrap: wrap;
-	margin: 0 -5px;
+	margin: 0 -5px 40px;
 	
 	@include media ('>=tablet') {
 		margin: 0 -15px;
@@ -913,11 +907,11 @@ blockquote {
 		
 		&.check-holder {
 			width: 50%;
-
+			
 			@include media ('>=tablet') {
 				margin-bottom: 0;
 			}
-
+			
 			.radio-label {
 				@include media ('>=tablet') {
 					margin-bottom: 0;
@@ -929,21 +923,9 @@ blockquote {
 
 input[type="radio"] {
 	&:checked {
-		+ .radio-label {
-			+ .details-holder {
-				display: block;
-
-				.radio-label {
-					@include media ('>=tablet') {
-						margin-bottom: 20px;
-					}
-				}
-			}
-			
-			.fake-input {
-				&:before {
-					opacity: 1;
-				}
+		+ .wpcf7-list-item-label {
+			&:before {
+				opacity: 1;
 			}
 		}
 	}
@@ -958,7 +940,7 @@ input[type="radio"] {
 		margin: 0 -5px;
 		
 		@include media ('<tablet') {
-			padding-bottom: 40px;
+			padding-bottom: 70px;
 			position: relative;
 		}
 		
@@ -974,44 +956,41 @@ input[type="radio"] {
 				padding: 0 15px;
 			}
 			
+			&:last-child {
+				padding-left: 10px;
+				
+				@include media ('>=tablet') {
+					padding-left: 15px;
+				}
+			}
+			
 			&.name-input {
 				display: none;
 				width: 100%;
 				
 				@include media ('<tablet') {
+					top: 100%;
 					position: absolute;
 					left: 0;
 					right: 0;
 				}
 				
 				@include media ('>=tablet') {
-					padding-left: 0;
-					padding-right: 30px;
+					padding: 80px 0 0;
+				}
+			}
+		}
+		
+		.wpcf7-list-item-label {
+			&:before {
+				@include media ('<desktop') {
+					top: 50px;
 				}
 			}
 			
-			input[type="radio"] {
-				&:checked {
-					+ .radio-label {
-						+ .detail-input {
-							&.name-input {
-								display: block;
-							}
-						}
-						
-						.fake-input {
-							&:before {
-								opacity: 1;
-							}
-						}
-					}
-				}
-			}
-			
-			
-			.fake-label {
-				@include media ('<tablet') {
-					min-height: 40px;
+			&:after {
+				@include media ('<desktop') {
+					top: 50px;
 				}
 			}
 		}
@@ -1022,37 +1001,45 @@ input[type="radio"] {
 	}
 	
 	&.partner-details {
+		margin-top: 60px;
+		
 		@include media ('<tablet') {
 			margin-right: -100%;
 		}
 		
 		@include media ('>=tablet') {
-			margin-right: calc(-100% - 60px);
+			margin-right: calc(-100% - 30px);
 		}
 	}
 }
 
-.fake-input {
-	@include size(35px);
-	
-	border-radius: 100%;
-	background: transparent;
-	border: 1px solid $white;
-	border-radius: 50%;
-	display: inline-block;
+.wpcf7-list-item-label {
 	position: relative;
+	padding-bottom: 44px;
+	
+	&:after {
+		@include size(36px);
+		
+		border-radius: 100%;
+		background: transparent;
+		border: 1px solid $white;
+		border-radius: 50%;
+		content: '';
+		display: block;
+		position: absolute;
+		top: 20px;
+	}
 	
 	&:before {
 		@include animate(opacity);
 		
-		content: "\e904";
+		content: "\e904" !important;
 		font-family: 'icomoon' !important;
 		font-size: 20px;
-		left: 50%;
+		left: 8px;
 		opacity: 0;
+		top: 22px;
 		position: absolute;
-		top: 50%;
-		transform: translate(-50%, -50%);
 	}
 }
 
@@ -1069,11 +1056,22 @@ input[type="radio"] {
 	cursor: pointer;
 }
 
-.invitation-form {
+.wpcf7-form {
 	@include media ('>=tablet') {
 		align-items: flex-end;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
+	}
+	
+	&.name-show {
+		.wpcf7-submit {
+			margin-bottom: 0;
+		}
+	}
+
+	.wpcf7-list-item {
+		margin: 0;
 	}
 	
 	label {
@@ -1082,7 +1080,7 @@ input[type="radio"] {
 	
 	label,
 	input,
-	.submit-btn {
+	.wpcf7-submit {
 		font-size: 12px;
 		font-family: $ubuntu-font;
 		letter-spacing: 1.2px;
@@ -1097,54 +1095,69 @@ input[type="radio"] {
 		
 		background-color: transparent;
 		border: none;
-		border-bottom: 1px solid rgba($white, .4);
-		padding: 0 0 20px;
-		width: 100%;
 		
 		&:focus {
 			border-color: $mint;
 		}
 	}
+	
+	input[type='text'] {
+		border-bottom: 1px solid rgba($white, .4);
+		padding: 0 0 20px;
+		width: 100%;
+		
+		&:focus {
+			border-color: $pink;
+		}
+	}
+	
+	.wpcf7-submit {
+		@include animate(background-color color);
+		
+		background: $white;
+		border: 1px solid $mint;
+		color: $mint;
+		font-weight: 700;
+		min-width: 160px;
+		padding: 15px 30px;
+		position: relative;
+		
+		@include media ('<tablet') {
+			margin-top: 20px;
+		}
+		
+		@include media ('>=desktop') {
+			margin-bottom: -38px;
+			min-width: 269px;
+			padding: 20px 44px;
+		}
+		
+		&:hover {
+			background-color: $mint;
+			color: $white;
+		}
+	}
 }
 
-.submit-btn {
-	@include animate(background-color color);
-	
-	background: $white;
-	border: 1px solid $mint;
-	color: $mint;
-	font-weight: 700;
-	min-width: 160px;
-	padding: 10px 30px 10px 20px;
-	text-align: left;
-	position: relative;
-	
-	@include media ('>=desktop') {
-		min-width: 269px;
-		padding: 20px 44px;
+div {
+	&.wpcf7-validation-errors,
+	&.wpcf7-acceptance-missing,
+	&.wpcf7-mail-sent-ng,
+	&.wpcf7-aborted {
+		color: #f01;
+		padding: 0;
+		margin: 20px 0 0;
+		border: none;
+		font-size: 14px;
+		font-style: italic;
 	}
-	
-	&:hover {
-		background-color: $mint;
-		color: $white;
-		
-		i {
-			color: $white;
-			transform: translateY(-50%) translateX(5px);
-		}
-	}
-	
-	i {
-		@include animate(transform);
-		
-		position: absolute;
-		right: 15px;
-		top: 50%;
-		transform: translateY(-50%);
-		
-		@include media ('>=tablet') {
-			right: 27px;
-		}
+}
+
+span {
+	&.wpcf7-not-valid-tip {
+		font-size: 14px;
+		font-style: italic;
+		padding: 5px 0;
 	}
 }
 

@@ -6,12 +6,12 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-
+		
 		@include media ('>=tablet') {
 			justify-content: space-between;
 		}
 	}
-
+	
 	.logo {
 		@include media ('<tablet') {
 			margin-bottom: 10px;
@@ -23,9 +23,15 @@
 	color: $dark-gray;
 	font-family: $ubuntu-font;
 	font-size: 14px;
-
+	
 	@include media ('>=tablet') {
 		padding-left: 30px;
+		width: calc(70% - 200px);
+	}
+	
+	@include media ('>=desktop') {
+		text-align: right;
+		width: calc(100% - 266px);
 	}
 	
 	a {
